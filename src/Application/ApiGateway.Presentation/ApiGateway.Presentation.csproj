@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Grpc.Core.Api" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ApiGateway.Application.Contracts\ApiGateway.Application.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
