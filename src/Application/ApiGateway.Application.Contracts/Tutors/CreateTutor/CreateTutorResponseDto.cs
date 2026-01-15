@@ -4,7 +4,7 @@ namespace ApiGateway.Application.Contracts.Tutors.CreateTutor;
 
 public class CreateTutorResponseDto
 {
-    public required string TutorId { get; init; }
+    public required Guid TutorId { get; init; }
 
     public required string FullName { get; init; }
 

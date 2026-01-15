@@ -38,7 +38,7 @@ public class TutorGrpcClient : ITutorGrpcClient
 
         var dto = new CreateTutorResponseDto
         {
-            TutorId = response.TutorId,
+            TutorId = Guid.Parse(response.TutorId),
             FullName = response.FullName,
             Email = response.Email,
             Status = response.Status.ToApplication(),
@@ -51,7 +51,7 @@ public class TutorGrpcClient : ITutorGrpcClient
     {
         var request = new UpdateTutorRequest
         {
-            TutorId = requestDto.TutorId,
+            TutorId = requestDto.TutorId.ToString(),
             FirstName = requestDto.FirstName,
             LastName = requestDto.LastName,
             Phone = requestDto.Phone,
@@ -69,7 +69,7 @@ public class TutorGrpcClient : ITutorGrpcClient
 
         var dto = new UpdateTutorResponseDto
         {
-            TutorId = response.TutorId,
+            TutorId = Guid.Parse(response.TutorId),
             UpdatedAt = response.UpdatedAt.ToDateTimeOffset(),
         };
         return dto;
@@ -77,13 +77,13 @@ public class TutorGrpcClient : ITutorGrpcClient
 
     public async Task<GetTutorResponseDto> GetTutorAsync(GetTutorRequestDto requestDto)
     {
-        var request = new GetTutorRequest { TutorId = requestDto.TutorId };
+        var request = new GetTutorRequest { TutorId = requestDto.TutorId.ToString() };
 
         GetTutorResponse response = await _client.GetTutorAsync(request);
 
         var dto = new GetTutorResponseDto
         {
-            TutorId = response.TutorId,
+            TutorId = Guid.Parse(response.TutorId),
             FirstName = response.FirstName,
             LastName = response.LastName,
             Email = response.Email,
@@ -101,13 +101,13 @@ public class TutorGrpcClient : ITutorGrpcClient
 
     public async Task<DeactivateTutorResponseDto> DeactivateTutor(DeactivateTutorRequestDto requestDto)
     {
-        var request = new DeactivateTutorRequest { TutorId = requestDto.TutorId };
+        var request = new DeactivateTutorRequest { TutorId = requestDto.TutorId.ToString() };
 
         DeactivateTutorResponse response = await _client.DeactivateTutorAsync(request);
 
         var dto = new DeactivateTutorResponseDto
         {
-            TutorId = response.TutorId,
+            TutorId = Guid.Parse(response.TutorId),
             DeactivatedAt = response.DeactivatedAt.ToDateTimeOffset(),
         };
         return dto;

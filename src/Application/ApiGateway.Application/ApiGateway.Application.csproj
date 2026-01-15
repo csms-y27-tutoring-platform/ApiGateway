@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ApiGateway.Application.Abstractions\ApiGateway.Application.Abstractions.csproj" />
+      <ProjectReference Include="..\ApiGateway.Application.Contracts\ApiGateway.Application.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>

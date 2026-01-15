@@ -2,5 +2,5 @@ namespace ApiGateway.Application.Contracts.Schedule;
 
 public class CreateScheduleSlotResponseDto
 {
-    public required string SlotId { get; init; }
+    public required Guid SlotId { get; init; }
 }

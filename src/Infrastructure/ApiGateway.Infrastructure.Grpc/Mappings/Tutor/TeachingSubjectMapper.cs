@@ -8,7 +8,7 @@ public static class TeachingSubjectMapper
     {
         var teachingSubjectRequest = new TeachingSubjectRequest
         {
-            SubjectId = dto.SubjectId,
+            SubjectId = dto.SubjectId.ToString(),
             PricePerHour = dto.PricePerHour,
             Description = dto.Description,
             ExperienceYears = dto.ExperienceYears,
@@ -20,8 +20,8 @@ public static class TeachingSubjectMapper
     {
         var dto = new TeachingSubjectResponseDto
         {
-            TeachingSubjectId = response.TeachingSubjectId,
-            SubjectId = response.SubjectId,
+            TeachingSubjectId = Guid.Parse(response.TeachingSubjectId),
+            SubjectId = Guid.Parse(response.SubjectId),
             SubjectName = response.SubjectName,
             PricePerHour = response.PricePerHour,
             Description = response.Description,

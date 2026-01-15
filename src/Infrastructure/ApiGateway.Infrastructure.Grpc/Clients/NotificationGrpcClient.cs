@@ -18,7 +18,7 @@ public class NotificationGrpcClient : INotificationGrpcClient
 
     public async Task<GetNotificationsResponseDto> GetNotificationsAsync(GetNotificationsRequestDto requestDto)
     {
-        var request = new GetNotificationsRequest { UserId = requestDto.UserId };
+        var request = new GetNotificationsRequest { UserId = requestDto.UserId.ToString() };
 
         GetNotificationsResponse response = await _client.GetNotificationsAsync(request);
 
@@ -41,7 +41,7 @@ public class NotificationGrpcClient : INotificationGrpcClient
 
     public async Task<GetUnreadCountResponseDto> GetUnreadCountAsync(GetUnreadCountRequestDto requestDto)
     {
-        var request = new GetUnreadCountRequest { UserId = requestDto.UserId };
+        var request = new GetUnreadCountRequest { UserId = requestDto.UserId.ToString() };
 
         GetUnreadCountResponse response = await _client.GetUnreadCountAsync(request);
 
@@ -51,14 +51,14 @@ public class NotificationGrpcClient : INotificationGrpcClient
 
     public async Task MarkAsReadAsync(MarkAsReadRequestDto requestDto)
     {
-        var request = new MarkAsReadRequest { NotificationId = requestDto.NotificationId };
+        var request = new MarkAsReadRequest { NotificationId = requestDto.NotificationId.ToString() };
 
         await _client.MarkAsReadAsync(request);
     }
 
     public async Task MarkAllAsReadAsync(MarkAllAsReadRequestDto requestDto)
     {
-        var request = new MarkAllAsReadRequest { UserId = requestDto.UserId };
+        var request = new MarkAllAsReadRequest { UserId = requestDto.UserId.ToString() };
 
         await _client.MarkAllAsReadAsync(request);
     }

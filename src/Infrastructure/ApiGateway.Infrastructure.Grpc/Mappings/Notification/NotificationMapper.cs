@@ -9,8 +9,8 @@ public static class NotificationMapper
     {
         var dto = new NotificationResponse
         {
-            Id = notification.Id,
-            UserId = notification.UserId,
+            Id = Guid.Parse(notification.Id),
+            UserId = Guid.Parse(notification.UserId),
             Title = notification.Title,
             Content = notification.Content,
             Type = notification.Type.ToApplication(),

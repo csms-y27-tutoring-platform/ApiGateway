@@ -5,7 +5,7 @@ namespace ApiGateway.Application.Contracts.Tutors.UpdateTutor;
 
 public class UpdateTutorRequestDto
 {
-    public required string TutorId { get; init; }
+    public required Guid TutorId { get; init; }
 
     public required string FirstName { get; init; }
 

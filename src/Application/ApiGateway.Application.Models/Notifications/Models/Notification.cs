@@ -4,9 +4,9 @@ namespace ApiGateway.Application.Models.Notifications.Models;
 
 public class Notification
 {
-    public required string Id { get; init; }
+    public required Guid Id { get; init; }
 
-    public required string UserId { get; init; }
+    public required Guid UserId { get; init; }
 
     public required string Title { get; init; }
 

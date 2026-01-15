@@ -2,7 +2,7 @@ namespace ApiGateway.Application.Contracts.Tutors.TeachingSubject;
 
 public class TeachingSubjectRequestDto
 {
-    public required string SubjectId { get; init; }
+    public required Guid SubjectId { get; init; }
 
     public double PricePerHour { get; init; }
 

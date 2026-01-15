@@ -17,14 +17,14 @@ public class ScheduleGrpcClient : IScheduleGrpcClient
     {
         var request = new CreateScheduleSlotRequest
         {
-            TutorId = requestDto.TutorId,
+            TutorId = requestDto.TutorId.ToString(),
             StartTime = requestDto.StartTime.ToTimestamp(),
             EndTime = requestDto.EndTime.ToTimestamp(),
         };
 
         CreateScheduleSlotResponse response = await _client.CreateScheduleSlotAsync(request);
 
-        var dto = new CreateScheduleSlotResponseDto { SlotId = response.SlotId };
+        var dto = new CreateScheduleSlotResponseDto { SlotId = Guid.Parse(response.SlotId) };
         return dto;
     }
 }

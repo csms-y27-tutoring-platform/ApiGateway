@@ -2,5 +2,5 @@ namespace ApiGateway.Application.Contracts.Notifications.GetUnreadCount;
 
 public class GetUnreadCountRequestDto
 {
-    public required string UserId { get; init; }
+    public required Guid UserId { get; init; }
 }
