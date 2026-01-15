@@ -1,6 +1,5 @@
 using ApiGateway.Application.Contracts.GatewayServices;
 using ApiGateway.Application.Contracts.Schedule;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiGateway.Presentation.Controllers;

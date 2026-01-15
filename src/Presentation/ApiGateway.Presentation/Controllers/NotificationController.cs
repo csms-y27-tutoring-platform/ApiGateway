@@ -3,7 +3,6 @@ using ApiGateway.Application.Contracts.Notifications.GetNotification;
 using ApiGateway.Application.Contracts.Notifications.GetNotifications;
 using ApiGateway.Application.Contracts.Notifications.GetUnreadCount;
 using ApiGateway.Application.Contracts.Notifications.MarkAsRead;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiGateway.Presentation.Controllers;

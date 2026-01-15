@@ -6,7 +6,6 @@ using ApiGateway.Application.Contracts.Booking.QueryBookingHistory;
 using ApiGateway.Application.Contracts.Booking.QueryBookings;
 using ApiGateway.Application.Contracts.GatewayServices;
 using ApiGateway.Application.Models.Bookings.Enums;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiGateway.Presentation.Controllers;

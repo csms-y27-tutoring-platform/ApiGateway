@@ -10,4 +10,8 @@
       <ProjectReference Include="..\ApiGateway.Application.Models\ApiGateway.Application.Models.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    </ItemGroup>
+
 </Project>

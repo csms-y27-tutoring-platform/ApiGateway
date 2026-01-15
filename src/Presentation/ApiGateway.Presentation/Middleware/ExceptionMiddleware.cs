@@ -1,5 +1,4 @@
 using Grpc.Core;
-using Microsoft.AspNetCore.Http;
 
 namespace ApiGateway.Presentation.Middleware;
 

@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
+        <OutputType>Exe</OutputType>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -10,11 +11,14 @@
       <PackageReference Include="Grpc.Core.Api" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc" />
       <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\..\Application\ApiGateway.Application.Contracts\ApiGateway.Application.Contracts.csproj" />
-      <ProjectReference Include="..\ApiGateway.Application.Contracts\ApiGateway.Application.Contracts.csproj" />
+      <ProjectReference Include="..\..\Application\ApiGateway.Application\ApiGateway.Application.csproj" />
+      <ProjectReference Include="..\..\Infrastructure\ApiGateway.Infrastructure.Grpc\ApiGateway.Infrastructure.Grpc.csproj" />
     </ItemGroup>
 
 </Project>

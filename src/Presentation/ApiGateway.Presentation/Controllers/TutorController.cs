@@ -3,7 +3,6 @@ using ApiGateway.Application.Contracts.Tutors.CreateTutor;
 using ApiGateway.Application.Contracts.Tutors.DeactivateTutor;
 using ApiGateway.Application.Contracts.Tutors.GetTutor;
 using ApiGateway.Application.Contracts.Tutors.UpdateTutor;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiGateway.Presentation.Controllers;
