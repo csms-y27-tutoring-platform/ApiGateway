@@ -75,19 +75,24 @@ public class BookingGatewayService : IBookingGatewayService
 
     public async Task<QueryBookingsResponseDto> QueryBookingsAsync(QueryBookingsRequestDto requestDto)
     {
-        if (requestDto.Ids.Any(id => id <= 0))
-        {
-            throw new ArgumentException("Invalid Ids. Ids must be greater than zero");
-        }
-
         if (requestDto.Ids is null || requestDto.Ids.Length == 0)
         {
             throw new ArgumentException("At least one Id is required");
         }
 
-        if (requestDto.TutorId <= 0 || requestDto.SubjectId <= 0)
+        if (requestDto.Ids.Any(id => id <= 0))
         {
-            throw new ArgumentException("Invalid Id. Id must be greater than zero");
+            throw new ArgumentException("Invalid Ids. Ids must be greater than zero");
+        }
+
+        if (requestDto.TutorId.HasValue && requestDto.TutorId <= 0)
+        {
+            throw new ArgumentException("Invalid Id. Tutor Id must be greater than zero");
+        }
+
+        if (requestDto.SubjectId.HasValue && requestDto.SubjectId <= 0)
+        {
+            throw new ArgumentException("Invalid Id. Subject Id must be greater than zero");
         }
 
         if (requestDto.Cursor < 0)
