@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Application", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{0C5370BE-7EFA-44D6-B273-45814541C525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Presentation", "src\Application\ApiGateway.Presentation\ApiGateway.Presentation.csproj", "{0B8A85CE-3C9C-4295-B169-A3E649947F12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Presentation", "src/Presentation/ApiGateway.Presentation/ApiGateway.Presentation.csproj", "{0B8A85CE-3C9C-4295-B169-A3E649947F12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

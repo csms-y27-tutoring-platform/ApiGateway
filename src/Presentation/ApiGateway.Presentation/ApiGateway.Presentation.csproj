@@ -13,6 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Application\ApiGateway.Application.Contracts\ApiGateway.Application.Contracts.csproj" />
       <ProjectReference Include="..\ApiGateway.Application.Contracts\ApiGateway.Application.Contracts.csproj" />
     </ItemGroup>
 
