@@ -20,9 +20,9 @@ public class BookingGatewayService : IBookingGatewayService
 
     public async Task<CreateBookingResponseDto> CreateBookingAsync(CreateBookingRequestDto requestDto)
     {
-        if (requestDto.TutorId <= 0 || requestDto.TimeSlotId <= 0 || requestDto.SubjectId <= 0)
+        if (requestDto.TutorId == Guid.Empty || requestDto.TimeSlotId == Guid.Empty || requestDto.SubjectId == Guid.Empty)
         {
-            throw new ArgumentException("Invalid Id. Id must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
         if (string.IsNullOrWhiteSpace(requestDto.Name))
@@ -35,9 +35,9 @@ public class BookingGatewayService : IBookingGatewayService
 
     public async Task<CancelBookingResponseDto> CancelBookingAsync(CancelBookingRequestDto requestDto)
     {
-        if (requestDto.BookingId <= 0)
+        if (requestDto.BookingId == Guid.Empty)
         {
-            throw new ArgumentException("Invalid Id. Id must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
         if (string.IsNullOrWhiteSpace(requestDto.Name))
@@ -55,9 +55,9 @@ public class BookingGatewayService : IBookingGatewayService
 
     public async Task<CompleteBookingResponseDto> CompleteBookingAsync(CompleteBookingRequestDto requestDto)
     {
-        if (requestDto.BookingId <= 0)
+        if (requestDto.BookingId == Guid.Empty)
         {
-            throw new ArgumentException("Invalid Id. Id must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
         return await _client.CompleteBookingAsync(requestDto);
@@ -65,9 +65,9 @@ public class BookingGatewayService : IBookingGatewayService
 
     public async Task<GetBookingResponseDto> GetBookingByIdAsync(GetBookingRequestDto requestDto)
     {
-        if (requestDto.BookingId <= 0)
+        if (requestDto.BookingId == Guid.Empty)
         {
-            throw new ArgumentException("Invalid Id. Id must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
         return await _client.GetBookingByIdAsync(requestDto);
@@ -75,29 +75,29 @@ public class BookingGatewayService : IBookingGatewayService
 
     public async Task<QueryBookingsResponseDto> QueryBookingsAsync(QueryBookingsRequestDto requestDto)
     {
-        if (requestDto.Ids is null || requestDto.Ids.Length == 0)
+        if (requestDto.Ids.Length == 0)
         {
             throw new ArgumentException("At least one Id is required");
         }
 
-        if (requestDto.Ids.Any(id => id <= 0))
+        if (requestDto.Ids.Any(id => id == Guid.Empty))
         {
-            throw new ArgumentException("Invalid Ids. Ids must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
-        if (requestDto.TutorId.HasValue && requestDto.TutorId <= 0)
+        if (requestDto.TutorId.HasValue && requestDto.TutorId == Guid.Empty)
         {
-            throw new ArgumentException("Invalid Id. Tutor Id must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
-        if (requestDto.SubjectId.HasValue && requestDto.SubjectId <= 0)
+        if (requestDto.SubjectId.HasValue && requestDto.SubjectId == Guid.Empty)
         {
-            throw new ArgumentException("Invalid Id. Subject Id must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
-        if (requestDto.Cursor < 0)
+        if (requestDto.Cursor == Guid.Empty)
         {
-            throw new ArgumentException("Cursor must be greater than or equal to zero");
+            throw new ArgumentException("Cursor is can't be empty");
         }
 
         if (requestDto.PageSize <= 0)
@@ -110,19 +110,19 @@ public class BookingGatewayService : IBookingGatewayService
 
     public async Task<QueryBookingHistoryResponseDto> QueryBookingHistoryAsync(QueryBookingHistoryRequestDto requestDto)
     {
-        if (requestDto.Ids.Any(id => id <= 0))
+        if (requestDto.Ids.Any(id => id == Guid.Empty))
         {
-            throw new ArgumentException("Invalid Ids. Ids must be greater than zero");
+            throw new ArgumentException("Id is can't be empty");
         }
 
-        if (requestDto.Ids is null || requestDto.Ids.Length == 0)
+        if (requestDto.Ids.Length == 0)
         {
             throw new ArgumentException("At least one Id is required");
         }
 
-        if (requestDto.Cursor < 0)
+        if (requestDto.Cursor == Guid.Empty)
         {
-            throw new ArgumentException("Cursor must be greater than or equal to zero");
+            throw new ArgumentException("Cursor is can't be empty");
         }
 
         if (requestDto.PageSize <= 0)

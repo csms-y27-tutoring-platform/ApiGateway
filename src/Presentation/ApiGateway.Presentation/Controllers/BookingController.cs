@@ -35,7 +35,7 @@ public class BookingController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<CancelBookingResponseDto>> CancelBookingAsync(
-        [FromRoute] long id,
+        [FromRoute] Guid id,
         [FromBody] CancelBookingRequestDto body)
     {
         var request = new CancelBookingRequestDto
@@ -52,7 +52,7 @@ public class BookingController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<CompleteBookingResponseDto>> CompleteBookingAsync(
-        [FromRoute] long id)
+        [FromRoute] Guid id)
     {
         var request = new CompleteBookingRequestDto
         {
@@ -66,7 +66,7 @@ public class BookingController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<GetBookingResponseDto>> GetBookingAsync(
-        [FromRoute] long id)
+        [FromRoute] Guid id)
     {
         var request = new GetBookingRequestDto { BookingId = id };
         GetBookingResponseDto response = await _service.GetBookingByIdAsync(request);
@@ -77,12 +77,12 @@ public class BookingController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<QueryBookingsResponseDto>> QueryBookings(
-        [FromQuery] long[] ids,
-        [FromQuery] long? tutorId,
-        [FromQuery] long? subjectId,
+        [FromQuery] Guid[] ids,
+        [FromQuery] Guid? tutorId,
+        [FromQuery] Guid? subjectId,
         [FromQuery] BookingStatus? status,
         [FromQuery] string? createdBy,
-        [FromQuery] long cursor = 0,
+        [FromQuery] Guid cursor,
         [FromQuery] int pageSize = 10)
     {
         var request = new QueryBookingsRequestDto
@@ -103,9 +103,9 @@ public class BookingController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<QueryBookingHistoryResponseDto>> QueryHistoryAsync(
-        [FromQuery] long[] ids,
+        [FromQuery] Guid[] ids,
         [FromQuery] BookingHistoryItemKind? kind,
-        [FromQuery] long cursor = 0,
+        [FromQuery] Guid cursor,
         [FromQuery] int pageSize = 10)
     {
         var request = new QueryBookingHistoryRequestDto

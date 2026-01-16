@@ -22,9 +22,9 @@ public class BookingGrpcClient : IBookingGrpcClient
     {
         var request = new BookingRequest
         {
-            TutorId = requestDto.TutorId,
-            TimeSlotId = requestDto.TimeSlotId,
-            SubjectId = requestDto.SubjectId,
+            TutorId = requestDto.TutorId.ToString(),
+            TimeSlotId = requestDto.TimeSlotId.ToString(),
+            SubjectId = requestDto.SubjectId.ToString(),
             Name = requestDto.Name,
         };
 
@@ -32,7 +32,7 @@ public class BookingGrpcClient : IBookingGrpcClient
 
         var dto = new CreateBookingResponseDto
         {
-            BookingId = response.BookingId,
+            BookingId = Guid.Parse(response.BookingId),
         };
         return dto;
     }
@@ -41,7 +41,7 @@ public class BookingGrpcClient : IBookingGrpcClient
     {
         var request = new CancelBookingRequest
         {
-            BookingId = requestDto.BookingId,
+            BookingId = requestDto.BookingId.ToString(),
             Name = requestDto.Name,
             Reason = requestDto.Reason,
         };
@@ -59,7 +59,7 @@ public class BookingGrpcClient : IBookingGrpcClient
     {
         var request = new CompleteBookingRequest
         {
-            BookingId = requestDto.BookingId,
+            BookingId = requestDto.BookingId.ToString(),
         };
 
         CompleteBookingResponse response = await _client.CompleteBookingAsync(request);
@@ -75,7 +75,7 @@ public class BookingGrpcClient : IBookingGrpcClient
     {
         var request = new GetBookingRequest
         {
-            BookingId = requestDto.BookingId,
+            BookingId = requestDto.BookingId.ToString(),
         };
 
         GetBookingResponse response = await _client.GetBookingByIdAsync(request);
@@ -84,10 +84,10 @@ public class BookingGrpcClient : IBookingGrpcClient
         {
             Booking = new Application.Models.Bookings.Models.Booking
             {
-                BookingId = response.Booking.BookingId,
-                TutorId = response.Booking.TutorId,
-                TimeSlotId = response.Booking.TimeSlotId,
-                SubjectId = response.Booking.SubjectId,
+                BookingId = Guid.Parse(response.Booking.BookingId),
+                TutorId = Guid.Parse(response.Booking.TutorId),
+                TimeSlotId = Guid.Parse(response.Booking.TimeSlotId),
+                SubjectId = Guid.Parse(response.Booking.SubjectId),
                 Status = response.Booking.Status.ToApplication(),
                 CreatedAt = response.Booking.CreatedAt.ToDateTimeOffset(),
                 Name = response.Booking.Name,
@@ -102,12 +102,12 @@ public class BookingGrpcClient : IBookingGrpcClient
         {
             Status = requestDto.Status.ToGrpc(),
             Name = requestDto.Name,
-            Cursor = requestDto.Cursor,
+            Cursor = requestDto.Cursor.ToString(),
             PageSize = requestDto.PageSize,
         };
-        if (requestDto.TutorId.HasValue) request.TutorId = requestDto.TutorId.Value;
-        if (requestDto.SubjectId.HasValue) request.SubjectId = requestDto.SubjectId.Value;
-        request.Ids.AddRange(requestDto.Ids);
+        if (requestDto.TutorId.HasValue) request.TutorId = requestDto.TutorId.Value.ToString();
+        if (requestDto.SubjectId.HasValue) request.SubjectId = requestDto.SubjectId.Value.ToString();
+        request.Ids.AddRange(requestDto.Ids.Select(id => id.ToString()));
 
         QueryBookingsResponse response = await _client.QueryBookingsAsync(request);
 
@@ -123,10 +123,10 @@ public class BookingGrpcClient : IBookingGrpcClient
         var request = new QueryBookingHistoryRequest
         {
             Kind = requestDto.Kind.ToGrpc(),
-            Cursor = requestDto.Cursor,
+            Cursor = requestDto.Cursor.ToString(),
             PageSize = requestDto.PageSize,
         };
-        request.Ids.AddRange(requestDto.Ids);
+        request.Ids.AddRange(requestDto.Ids.Select(id => id.ToString()));
 
         QueryBookingHistoryResponse response = await _client.QueryBookingHistoryAsync(request);
 

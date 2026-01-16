@@ -4,13 +4,13 @@ namespace ApiGateway.Application.Models.Bookings.Models;
 
 public class Booking
 {
-    public long BookingId { get; init; }
+    public Guid BookingId { get; init; }
 
-    public long TutorId { get; init; }
+    public Guid TutorId { get; init; }
 
-    public long TimeSlotId { get; init; }
+    public Guid TimeSlotId { get; init; }
 
-    public long SubjectId { get; init; }
+    public Guid SubjectId { get; init; }
 
     public BookingStatus? Status { get; init; }
 

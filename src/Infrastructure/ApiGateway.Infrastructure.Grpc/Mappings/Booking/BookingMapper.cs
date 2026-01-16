@@ -6,10 +6,10 @@ public static class BookingMapper
     {
         var dto = new Application.Models.Bookings.Models.Booking
         {
-            BookingId = booking.BookingId,
-            TutorId = booking.TutorId,
-            TimeSlotId = booking.TimeSlotId,
-            SubjectId = booking.SubjectId,
+            BookingId = Guid.Parse(booking.BookingId),
+            TutorId = Guid.Parse(booking.TutorId),
+            TimeSlotId = Guid.Parse(booking.TimeSlotId),
+            SubjectId = Guid.Parse(booking.SubjectId),
             Status = booking.Status.ToApplication(),
             CreatedAt = booking.CreatedAt.ToDateTimeOffset(),
             Name = booking.Name,

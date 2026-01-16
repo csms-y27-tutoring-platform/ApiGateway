@@ -6,8 +6,8 @@ public static class BookingHistoryMapper
     {
         var dto = new Application.Models.Bookings.Models.BookingHistory
         {
-            BookingHistoryItemId = bookingHistory.BookingHistoryItemId,
-            BookingId = bookingHistory.BookingId,
+            BookingHistoryItemId = Guid.Parse(bookingHistory.BookingHistoryItemId),
+            BookingId = Guid.Parse(bookingHistory.BookingId),
             Kind = bookingHistory.Kind.ToApplication(),
             CreatedAt = bookingHistory.CreatedAt.ToDateTimeOffset(),
             Payload = bookingHistory.Payload.ToApplication(),
