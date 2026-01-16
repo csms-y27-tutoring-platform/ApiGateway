@@ -4,10 +4,10 @@ namespace ApiGateway.Infrastructure.Grpc.Mappings.Booking;
 
 public static class BookingHistoryPayloadMapper
 {
-    public static Application.Models.Bookings.Payloads.BookingHistoryPayload ToApplication(
+    public static Application.Models.Bookings.Payloads.BookingHistoryPayload? ToApplication(
         this BookingHistoryPayload bookingHistoryPayload)
     {
-        Application.Models.Bookings.Payloads.BookingHistoryPayload payload = bookingHistoryPayload.PayloadCase switch
+        Application.Models.Bookings.Payloads.BookingHistoryPayload? payload = bookingHistoryPayload.PayloadCase switch
         {
             BookingHistoryPayload.PayloadOneofCase.Created => new BookingHistoryPayloadCreated(bookingHistoryPayload
                 .Created.CreatedBy),
@@ -15,7 +15,7 @@ public static class BookingHistoryPayloadMapper
                 bookingHistoryPayload.Cancelled.CancelledBy,
                 bookingHistoryPayload.Cancelled.Reason),
             BookingHistoryPayload.PayloadOneofCase.Completed => new BookingHistoryPayloadCompleted(),
-            BookingHistoryPayload.PayloadOneofCase.None => throw new InvalidOperationException("Payload is empty"),
+            BookingHistoryPayload.PayloadOneofCase.None => null,
             _ => throw new ArgumentOutOfRangeException(nameof(bookingHistoryPayload)),
         };
         return payload;

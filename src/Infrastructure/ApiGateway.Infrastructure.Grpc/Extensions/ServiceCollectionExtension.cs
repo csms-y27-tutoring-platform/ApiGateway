@@ -23,6 +23,11 @@ public static class ServiceCollectionExtension
             IOptions<TutorOption> option = sp.GetRequiredService<IOptions<TutorOption>>();
             o.Address = new Uri(option.Value.Address);
         });
+        serviceCollection.AddGrpcClient<ScheduleService.ScheduleServiceClient>((sp, o) =>
+        {
+            IOptions<TutorOption> option = sp.GetRequiredService<IOptions<TutorOption>>();
+            o.Address = new Uri(option.Value.Address);
+        });
 
         serviceCollection.AddOptions<NotificationOption>().BindConfiguration("GrpcClients:NotificationService");
         serviceCollection.AddGrpcClient<NotificationService.NotificationServiceClient>((sp, o) =>

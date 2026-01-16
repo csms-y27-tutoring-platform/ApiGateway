@@ -9,9 +9,9 @@ public class BookingHistory
 
     public long BookingId { get; init; }
 
-    public BookingHistoryItemKind Kind { get; init; }
+    public BookingHistoryItemKind? Kind { get; init; }
 
     public DateTimeOffset CreatedAt { get; init; }
 
-    public required BookingHistoryPayload Payload { get; init; }
+    public required BookingHistoryPayload? Payload { get; init; }
 }

@@ -2,10 +2,10 @@ namespace ApiGateway.Infrastructure.Grpc.Mappings.Booking;
 
 public static class BookingHistoryItemKindMapper
 {
-    public static Application.Models.Bookings.Enums.BookingHistoryItemKind ToApplication(
+    public static Application.Models.Bookings.Enums.BookingHistoryItemKind? ToApplication(
         this BookingHistoryItemKind bookingHistoryItemKind)
     {
-        Application.Models.Bookings.Enums.BookingHistoryItemKind kind = bookingHistoryItemKind switch
+        Application.Models.Bookings.Enums.BookingHistoryItemKind? kind = bookingHistoryItemKind switch
         {
             BookingHistoryItemKind.BookingHistoryItemCreated => Application.Models.Bookings.Enums.BookingHistoryItemKind
                 .ItemCreated,
@@ -13,7 +13,7 @@ public static class BookingHistoryItemKindMapper
                 .BookingHistoryItemKind.ItemCancelled,
             BookingHistoryItemKind.BookingHistoryItemCompleted => Application.Models.Bookings.Enums
                 .BookingHistoryItemKind.ItemCompleted,
-            BookingHistoryItemKind.BookingHistoryItemUnspecified => throw new InvalidOperationException("Kind is empty"),
+            BookingHistoryItemKind.BookingHistoryItemUnspecified => null,
             _ => throw new ArgumentOutOfRangeException(nameof(bookingHistoryItemKind)),
         };
         return kind;

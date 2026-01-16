@@ -9,8 +9,6 @@
 
     <ItemGroup>
       <PackageReference Include="Grpc.Core.Api" />
-      <PackageReference Include="Microsoft.AspNetCore.Mvc" />
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" />
       <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" />
     </ItemGroup>

@@ -97,7 +97,7 @@ public class BookingGatewayService : IBookingGatewayService
 
         if (requestDto.Cursor < 0)
         {
-            throw new ArgumentException("cursor must be greater than or equal to zero");
+            throw new ArgumentException("Cursor must be greater than or equal to zero");
         }
 
         if (requestDto.PageSize <= 0)

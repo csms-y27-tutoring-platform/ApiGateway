@@ -12,7 +12,7 @@ public class Booking
 
     public long SubjectId { get; init; }
 
-    public BookingStatus Status { get; init; }
+    public BookingStatus? Status { get; init; }
 
     public DateTimeOffset CreatedAt { get; init; }
 
