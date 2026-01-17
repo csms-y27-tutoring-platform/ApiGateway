@@ -24,7 +24,7 @@ public class NotificationController : ControllerBase
     public async Task<ActionResult<GetNotificationsResponseDto>> GetNotificationsAsync(
         [FromQuery] Guid userId)
     {
-        var request = new GetNotificationsRequestDto { UserId = userId };
+        var request = new GetNotificationsRequestDto { UserId = userId.ToString() };
         GetNotificationsResponseDto response = await _service.GetNotificationsAsync(request);
         return Ok(response);
     }

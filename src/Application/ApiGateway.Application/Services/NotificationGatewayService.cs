@@ -18,7 +18,7 @@ public class NotificationGatewayService : INotificationGatewayService
 
     public async Task<GetNotificationsResponseDto> GetNotificationsAsync(GetNotificationsRequestDto requestDto)
     {
-        if (requestDto.UserId == Guid.Empty)
+        if (string.IsNullOrEmpty(requestDto.UserId))
         {
             throw new ArgumentException("UserId is can't be empty");
         }
