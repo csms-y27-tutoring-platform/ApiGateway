@@ -31,16 +31,15 @@ public class BookingController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost("{id:long}/cancel")]
+    [HttpPost("cancel")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<CancelBookingResponseDto>> CancelBookingAsync(
-        [FromRoute] Guid id,
         [FromBody] CancelBookingRequestDto body)
     {
         var request = new CancelBookingRequestDto
         {
-            BookingId = id,
+            BookingId = body.BookingId,
             Name = body.Name,
             Reason = body.Reason,
         };
@@ -48,7 +47,7 @@ public class BookingController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPost("{id:long}/complete")]
+    [HttpPost("{id:guid}/complete")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<CompleteBookingResponseDto>> CompleteBookingAsync(
@@ -62,7 +61,7 @@ public class BookingController : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("{id:long}")]
+    [HttpGet("{id:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<GetBookingResponseDto>> GetBookingAsync(
@@ -82,7 +81,7 @@ public class BookingController : ControllerBase
         [FromQuery] Guid? subjectId,
         [FromQuery] BookingStatus? status,
         [FromQuery] string? createdBy,
-        [FromQuery] Guid cursor,
+        [FromQuery] Guid cursor = default,
         [FromQuery] int pageSize = 10)
     {
         var request = new QueryBookingsRequestDto
@@ -105,7 +104,7 @@ public class BookingController : ControllerBase
     public async Task<ActionResult<QueryBookingHistoryResponseDto>> QueryHistoryAsync(
         [FromQuery] Guid[] ids,
         [FromQuery] BookingHistoryItemKind? kind,
-        [FromQuery] Guid cursor,
+        [FromQuery] Guid cursor = default,
         [FromQuery] int pageSize = 10)
     {
         var request = new QueryBookingHistoryRequestDto

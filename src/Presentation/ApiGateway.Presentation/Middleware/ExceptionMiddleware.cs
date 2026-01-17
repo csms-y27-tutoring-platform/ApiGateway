@@ -15,6 +15,11 @@ public class ExceptionMiddleware : IMiddleware
             context.Response.StatusCode = StatusCodes.Status400BadRequest;
             await context.Response.WriteAsync(ex.Message);
         }
+        catch (InvalidOperationException ex)
+        {
+            context.Response.StatusCode = StatusCodes.Status412PreconditionFailed;
+            await context.Response.WriteAsync(ex.Message);
+        }
         catch (RpcException ex)
         {
             context.Response.StatusCode = ex.StatusCode switch
